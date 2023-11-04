@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import './App.css';
-import logo from "./logo2.png"
+import logo from "./logo5.png"
 import arrow from "./arrow.svg"
 import favicon from "./logo1.png"
 import burger from "./burger.svg"
