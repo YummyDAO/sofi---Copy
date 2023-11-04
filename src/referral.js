@@ -20,7 +20,7 @@ import Grid from '@mui/material/Grid';
 import './App.css';
 import logo from "./logo5.png"
 import arrow from "./arrow.svg"
-import favicon from "./logo1.png"
+import favicon from "./favicon2.png"
 import burger from "./burger.svg"
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
