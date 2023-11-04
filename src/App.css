@@ -540,6 +540,13 @@ img, svg {
   margin-top: 1rem !important;
   font-size: 0.8rem !important;
 }
+.css-5poeop{
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.css-i44wyl{
+  width: 100% !important;
+}
 @media (max-width: 860px){
   .mr1, .nav-items, .innernav{
     display: none;
@@ -584,8 +591,8 @@ img, svg {
     flex-wrap: wrap;
   }
   .mo1, .mu1{
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
   }
   .fo, .tliq, .tprice, .tc, .stakebottom, .st2, .st1, .mul1{
     width: 100% !important;
