@@ -185,15 +185,15 @@ function DrawerAppBar(props) {
         <img src={logo}></img>
       </Link>
       {/*<Divider />*/}
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <Link href="/" underline="none" color="inherit" className='css-1fn6sd1'>
+        <Typography >Cook WRAPPEDX</Typography>
+      </Link>
+      <Link href="/stake" underline="none" color="inherit" className='css-1fn6sd1'>
+        <Typography >Stake WRAPPEDX</Typography>
+      </Link>
+      <Link href="/referral" underline="none" color="inherit" className='css-1fn6sd1'>
+        <Typography >Bros REWARD</Typography>
+      </Link>
     </Box>
   );
 
