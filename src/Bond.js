@@ -381,7 +381,7 @@ const GetTokens = async () => {
         <Toolbar />
         <Container maxWidth="lg" className='mtp2'>
           <Grid container className='ryff'>
-            <Grid item xs={12} sm={12} md={6} lg={6} className=''>
+            <Grid item xs={12} sm={12} md={5} lg={5} className=''>
               <div className='scroll1'>
                 <Typography className='t1'>COOK YOUR WRAPPEDX</Typography>
                 <Card className='t2'>
