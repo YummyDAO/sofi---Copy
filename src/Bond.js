@@ -239,13 +239,15 @@ async function  Liquidity1() {
 
           let tx = await contract.getTokenLiquidity();
           //await tx.wait();
-          console.log("exchange", ethers.formatUnits(tx[0], 18) * 2)
+          console.log("real", ethers.formatUnits(tx[0], 18) * 2)
           setTliquidity(ethers.formatUnits(tx[0], 18) * 2)
       }
     } catch(error) {
       console.log(error);
     }
 };
+
+Liquidity1()
 
 const GetTokens = async () => {
   try {
@@ -361,7 +363,7 @@ const GetTokens = async () => {
               </Link>
               <div class="d-flex pt-lg-0 pt-5 px-4 px-md-0">
                 <a href="#" target="_blank" className="connect-btn d-lg-block d-none">
-                  <span className="connect">TVL: {Number(Tliquidity)} PLS</span> 
+                  <span className="connect">TVL: {Number(Tliquidity).toFixed(2)} PLS</span> 
                   <span className="arrow none">
                     <img src={arrow} alt="" className='none'></img>
                   </span>
