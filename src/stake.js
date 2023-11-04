@@ -405,7 +405,7 @@ function DrawerAppBar(props) {
               </Link>
               <div class="d-flex pt-lg-0 pt-5 px-4 px-md-0">
                 <a href="#" target="_blank" className="connect-btn d-lg-block d-none">
-                  <span className="connect">TVL: 1400.34 PLS</span> 
+                  <span className="connect">TVL: {Tliquidity} PLS</span> 
                   <span className="arrow none">
                     <img src={arrow} alt="" className='none'></img>
                   </span>

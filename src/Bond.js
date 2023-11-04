@@ -85,6 +85,7 @@ function DrawerAppBar(props) {
   const [ETHBal, setETHBal] = React.useState('');
   const [Onetok, setOnetok] = React.useState('');
   const [Avail, setAvail] = React.useState('');
+  const [Tliquidity, setTliquidity] = React.useState('');
 
 
 
@@ -227,6 +228,25 @@ async function Checkui() {
     }
 };
 
+async function  Liquidity1() {
+  try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+
+          let tx = await contract.getTokenLiquidity();
+          //await tx.wait();
+          console.log("exchange", ethers.formatUnits(tx[0], 18) * 2)
+          setTliquidity(ethers.formatUnits(tx[0], 18) * 2)
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
 const GetTokens = async () => {
   try {
     const { ethereum } = window;
@@ -277,6 +297,7 @@ const GetTokens = async () => {
   const { data, error} = useSWR('OneTok', OneTok, {refreshInterval: 1000})
   const { data1, error1} = useSWR('Ethbal', Ethbal, {refreshInterval: 1000})
   const { data2, error2} = useSWR('Tokbal', Tokbal1, {refreshInterval: 1000})
+  const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
 
   useEffect(() => {
     OneTok();
@@ -340,7 +361,7 @@ const GetTokens = async () => {
               </Link>
               <div class="d-flex pt-lg-0 pt-5 px-4 px-md-0">
                 <a href="#" target="_blank" className="connect-btn d-lg-block d-none">
-                  <span className="connect">TVL: 1400.34 PLS</span> 
+                  <span className="connect">TVL: {Number(Tliquidity)} PLS</span> 
                   <span className="arrow none">
                     <img src={arrow} alt="" className='none'></img>
                   </span>
