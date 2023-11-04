@@ -380,7 +380,7 @@ const GetTokens = async () => {
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
         <Container maxWidth="lg" className='mtp2'>
-          <Grid container className=''>
+          <Grid container className='ryff'>
             <Grid item xs={12} sm={12} md={6} lg={6} className=''>
               <div className='scroll1'>
                 <Typography className='t1'>COOK YOUR WRAPPEDX</Typography>

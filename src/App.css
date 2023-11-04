@@ -544,6 +544,9 @@ img, svg {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+.ryff{
+  justify-content: center !important;
+}
 .css-i44wyl{
   width: 100% !important;
 }
