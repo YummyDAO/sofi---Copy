@@ -118,12 +118,13 @@ img, svg {
   color: #fff !important;
 }
 
-.t2{ 
+.t2, .t5{ 
   color: #717b83 !important;
 }
 .css-1v4ccyo{
   border: 1px solid #2D3447 !important;
 }
+
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
   --bs-gutter-x: 1.5rem;
