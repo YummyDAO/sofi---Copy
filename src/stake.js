@@ -335,6 +335,9 @@ function DrawerAppBar(props) {
       <Link href="/referral" underline="none" color="inherit" className='css-1fn6sd1'>
         <Typography >Bros REWARD</Typography>
       </Link>
+      <Link href="" underline="none" color="inherit" className='css-1fn6sd1'>
+        <Typography >ZAP</Typography>
+      </Link>
     </Box>
   );
 
@@ -377,6 +380,9 @@ function DrawerAppBar(props) {
               </Link>
               <Link href="/referral" underline="none" color="inherit" className='css-1fn6sd1'>
                 <Typography >Bros REWARD</Typography>
+              </Link>
+              <Link href="" underline="none" color="inherit" className='css-1fn6sd1'>
+                <Typography >ZAP</Typography>
               </Link>
             </div>
             <div class="d-flex pt-lg-0 pt-5 px-4 px-md-0 alcenter">
