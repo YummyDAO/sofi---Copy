@@ -666,7 +666,8 @@ img, svg {
   margin-bottom: 2vh;
 }
 .mr1 img{
-  width: 10rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
 }
 .alcenter{
   align-items: center;

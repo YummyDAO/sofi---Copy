@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import './App.css';
-import logo from "./logo5.png"
+import logo from "./favicon2.png"
 import arrow from "./arrow.svg"
 import favicon from "./favicon2.png"
 import burger from "./burger.svg"
@@ -140,7 +140,7 @@ function DrawerAppBar(props) {
             //setTVL(ethers.formatUnits(tx[8], 18))
             setRewards(ethers.formatUnits(tx[6], 18))
             //setInvites(tx[0][12])
-            console.log("user", tx[1])
+            console.log("user1", ethers.formatUnits(tx[6], 18))
             //setLevel(tx[1])
             //setTokprice(ethers.formatUnits(tx, 18))
         }
@@ -303,6 +303,10 @@ function DrawerAppBar(props) {
   useEffect(() => {
     connectWallet();
     Checkuser();
+    Checkuser1();
+    Checkuser2();
+    Checkuser3();
+    Checkuser4();
     Checkui();
 }, [currentAccount]);
 
