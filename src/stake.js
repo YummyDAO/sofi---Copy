@@ -181,7 +181,7 @@ function DrawerAppBar(props) {
       }
   };
 
-  async function Bondbal() {
+  async function Bondbal(value) {
     try {
         const { ethereum } = window;
         if (ethereum) {
@@ -190,7 +190,7 @@ function DrawerAppBar(props) {
             //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
             const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
   
-            let tx = await contract.bonds(currentAccount, age);
+            let tx = await contract.bonds(currentAccount, value);
             //await tx.wait();
             console.log("exchange", ethers.formatUnits(tx[0], 18))
             setBondbalance(ethers.formatUnits(tx[0], 18))
@@ -258,7 +258,7 @@ function DrawerAppBar(props) {
           const provider = new ethers.BrowserProvider(window.ethereum);
           const signer = await provider.getSigner();
           const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer)
-          let tx = await contract.stake(age, {value: ethers.parseEther(Tokinput)});
+          let tx = await contract.stake(age, {value: ethers.parseEther((Number(bondbalance).toFixed(2) * Number(1.6)).toString())});
           await tx.wait();
       }
     } catch(error) {
@@ -270,13 +270,13 @@ function DrawerAppBar(props) {
 
   const handleChange1 = (event) => {
     setAge(event.target.value);
-    Bondbal();
+    Bondbal(event.target.value);
   };
 
-  const change3 = (event) => {
+  /*const change3 = (event) => {
     setTokinput(event.target.value);
     console.log("td", event.target.value)
-  };
+  };*/
 
   const change4 = (event) => {
     setSellinput(event.target.value);
@@ -311,7 +311,7 @@ function DrawerAppBar(props) {
         onChange={handleChange1}
         >
         {arr.map((item) => (
-          <MenuItem value={item}>Bond {item}</MenuItem>
+          <MenuItem value={item}>Bond {item +1}</MenuItem>
         ))}
       </Select>
   );
@@ -345,7 +345,7 @@ function DrawerAppBar(props) {
   const { data1, error1} = useSWR('Ethbal', Checkui, {refreshInterval: 1000})
   const { data2, error2} = useSWR('Tokbal', Checkuser, {refreshInterval: 1000})
   const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
-  const { data4, error4} = useSWR('Tokbal', Bondbal, {refreshInterval: 1000})
+  //const { data4, error4} = useSWR('Tokbal', Bondbal, {refreshInterval: 1000})
 
   //const container = window !== undefined ? () => window().document.body : undefined;
   useEffect(() => {
@@ -485,7 +485,7 @@ function DrawerAppBar(props) {
                           <MenuItem value={30}>Thirty</MenuItem>}
                         </Select>*/}
                         {menu1}
-                        <TextField id="outlined-basic" className='t8' label="Enter PLS amount" variant="outlined" onChange={change3}/>
+                        <TextField id="outlined-basic" className='t8' label={Number(bondbalance).toFixed(2) * Number(1.6)} variant="outlined" /*onChange={change3}*//>
                         <Typography className=''>Bond Balance</Typography>
                         <Typography className='riv'>{Number(bondbalance).toFixed(2)} PLS</Typography>
                       </FormControl>
