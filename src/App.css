@@ -607,6 +607,11 @@ img, svg {
   .mr1, .nav-items, .innernav{
     display: none;
   }
+  .css-z4r21k img{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 2rem;
+  }
   .ref2{
     flex-wrap: wrap;
   }
