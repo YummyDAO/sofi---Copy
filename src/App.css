@@ -125,6 +125,9 @@ img, svg {
   border: 1px solid #2D3447 !important;
   border-radius: 10px !important;
 }
+.css-1v4ccyo input{
+  color: #717b83 !important;
+}
 
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
