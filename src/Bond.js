@@ -422,7 +422,7 @@ const GetTokens = async () => {
                         <TextField id="outlined-basic" className='t8' label="Enter Bros address" variant="outlined" onChange={change4}/>
                     </div>
                     <Card className='tokenprice'>
-                      <Typography>1 WRAPPEDX = {Number(Onetok).toFixed(5)} PLS</Typography>
+                      <Typography>1 WRAPPEDX ~ {Number(Onetok).toFixed(2)} PLS</Typography>
                     </Card>
                     <div className='selectto'>
                       <Button variant="contained" className='t6' >30 days</Button>
