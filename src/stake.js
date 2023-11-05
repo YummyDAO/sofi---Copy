@@ -462,6 +462,7 @@ function DrawerAppBar(props) {
                 <div className='stake3'>
                   <Card className='t2 mo1'>
                     <div className='innercard'>
+                    <Typography className='t3'>Select Bonds</Typography>
                     <Box sx={{ minWidth: 120 }}>
                       <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Select Bond</InputLabel>
@@ -478,7 +479,7 @@ function DrawerAppBar(props) {
                           <MenuItem value={30}>Thirty</MenuItem>}
                         </Select>*/}
                         {menu1}
-                        <TextField id="outlined-basic" className='t8' label="Enter Eth amount" variant="outlined" onChange={change3}/>
+                        <TextField id="outlined-basic" className='t8' label="Enter PLS amount" variant="outlined" onChange={change3}/>
                         <Typography className=''>Bond Balance</Typography>
                         <Typography className='riv'>{Number(bondbalance).toFixed(2)} PLS</Typography>
                       </FormControl>
@@ -500,7 +501,7 @@ function DrawerAppBar(props) {
                       <div className='availbuttom'>
                         <div className='pair'>
                           <Typography className='mu5'>Pair address</Typography>
-                          <Link href="https://scan.pulsechain.com/address/0x5E6cd93664fFa88C4d11e57401D9b9beDFeC7618" className='mu5'>0x5E6cd93664fFa88C4d11e57401D9b9beDFeC7618</Link>
+                          <Link href="https://scan.pulsechain.com/address/0x5E6cd93664fFa88C4d11e57401D9b9beDFeC7618" className='mu5'>0x5E6cd93664fFa88C4dD9b9beDFeC7618</Link>
                         </div>
                         <div className='base none'>
                           <Typography className=''>BaseSwap</Typography>
@@ -520,15 +521,15 @@ function DrawerAppBar(props) {
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>liquidity Bonus</Typography>
-                        <Typography className='t13'>+{Liquidity ? Liquidity : 0}%</Typography>
+                        <Typography className='t13'>+{Liquidity ? Number(Liquidity) : 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>Hold Bonus</Typography>
-                        <Typography className='t13'>+{hold ? hold : 0}%</Typography>
+                        <Typography className='t13'>+{hold ? Number(hold) : 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>User liq Bonus</Typography>
-                        <Typography className='t13'>+{liq ? liq : 0}%</Typography>
+                        <Typography className='t13'>+{liq ? Number(liq) : 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>Tickets Raffle Pot</Typography>
@@ -542,8 +543,8 @@ function DrawerAppBar(props) {
                     <div className='innercard'>
                       <div className='stside'>
                         <div className='st1'>
-                          <Typography className='t3'>Total staked</Typography>
-                          <Typography className='t3 tot'>{Number(Tinvested).toFixed(2)}</Typography>
+                          <Typography className='t3'>Total invested</Typography>
+                          <Typography className='t3 tot'>{Number(Tinvested).toFixed(2)} PLS</Typography>
                           <Typography className='t3 tit'>Max staking income is 200%</Typography>
                         </div>
                         <div className='st2'>

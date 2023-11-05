@@ -1,6 +1,6 @@
 body {
-  background-color: #fff7f2 !important;
-  color: #2b1d11;
+  background-color: #171d23!important;
+  color: #fff !important;
   /*font-family: Inter,sans-serif;*/
   overflow-x: hidden;
   font-family: Epilogue, sans-serif !important;
@@ -42,7 +42,7 @@ body {
   margin-right: 0.5rem !important;
   line-height: 65px !important;
   position: relative !important;
-  color: rgb(16, 16, 16) !important;
+  color: #fff !important;
   white-space: nowrap !important;
 }
 .d-flex {
@@ -54,17 +54,23 @@ body {
 .connect-btn {
   border: 1px solid #498ff8 !important;
   border-radius: 12px !important;
-  color: #fff;
+  color: #fff !important;
   height: 46px !important;
   padding: 0 0 0 20px !important;
   display: flex;
 }
+.css-bhp9pd-MuiPaper-root-MuiCard-root{
+  color: #717b83 !important;
+}
 
+a{
+  text-decoration: none;
+}
 .connect {
   align-items: center !important;
   background: transparent !important;
   border-right: 0 !important;
-  color: #498ff8 !important;
+  color: #fff !important;
   display: inline-flex !important;
   font-size: 14px !important;
   font-weight: 600 !important;
@@ -108,7 +114,8 @@ img, svg {
 }
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
-  background-color: #fff7f2 !important;
+  background-color: #171D23 !important;
+  color: #fff !important;
 }
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -333,7 +340,7 @@ img, svg {
   background-color: transparent !important;
     box-shadow: none !important;
     border-radius: 20px !important;
-    border: 1px solid #ddd !important;
+    border: 1px solid #498ff8 ;
 }
 .innercard{
   padding: 1.3rem !important;
@@ -345,7 +352,8 @@ img, svg {
 .tokenprice{
   background-color: transparent !important;
   box-shadow: none !important;
-  border: 1px solid #ddd !important;
+  border: 1px solid #498ff8  !important;
+  color: #fff !important;
   border-radius: 10px !important;
   padding: 0.5rem !important;
   margin-bottom: 1.5rem !important;
@@ -359,6 +367,15 @@ img, svg {
   width: 100% !important;
   justify-content: space-between !important;
   margin-bottom: 1.5rem !important;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root label{
+  color: #717b83 !important;
+}
+.selectto button{
+  background: transparent !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+  border: 1px solid #2D3447 !important;
 }
 .t4{ 
   width: 100% !important;
@@ -375,10 +392,10 @@ img, svg {
     padding: 10px 30px !important;
     font-size: 0.9rem !important;
     font-weight: 600 !important;
-    background: #ddd !important;
+    background: linear-gradient(275deg,#3769E6 0%,#144FE2 40%,#144FE2 60%,#3769E6 100%) !important;
     color: #fff !important;
     box-shadow: none !important;
-    border: 1px solid #ddd !important;
+    border: 1px solid #2D3447 !important;
 }
 .imputu{
   display: flex;
@@ -484,17 +501,33 @@ img, svg {
   display: flex;
 }
 .tliq{
-  border: 1px solid #ddd !important;
+  border: 1px solid #2D3447 !important;
     border-radius: 10px;
     display: flex;
     padding: 1rem;
     align-self: center;
+    color: #717b83 !important;
     margin-right: 1rem;
 }
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root, .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  color: #717b83 !important;
+}
+.pair{
+ width: 100%;
+}
+.fot{
+  color: #717b83 !important;
+}
+
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+  border: 1px solid #2D3447 !important;
+}
+
 .tprice{
   border-radius: 10px;
   display: flex;
-  border: 1px solid #ccc;
+  border: 1px solid #2D3447 !important;
+  color: #717b83 !important;
   align-self: center;
   padding: 1rem;
   line-height: 1rem;

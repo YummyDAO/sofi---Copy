@@ -414,7 +414,7 @@ const GetTokens = async () => {
                         <div className='imputu'>
                           <Typography className='t7'>PLS Balance: {Number(ETHBal).toFixed(2)}</Typography>
                         </div>
-                        <TextField id="outlined-basic" className='t8' label="Enter Eth amount" variant="outlined" onChange={change3}/>
+                        <TextField id="outlined-basic" className='t8' label="Enter PLS amount" variant="outlined" onChange={change3}/>
                       <div className='imputu'>
                           <Typography className='t7'>WrappedX Balance: {Number(Avail).toFixed(2)}</Typography>
                         </div>

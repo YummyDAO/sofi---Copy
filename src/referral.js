@@ -75,8 +75,8 @@ const contractAbi = [{"inputs":[{"internalType":"address","name":"uniswapRouterA
 function DrawerAppBar(props) {
   //const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [rewards, setRewards] = React.useState(0);
-  const [level, setLevel] = React.useState();
+  const [rewards, setRewards] = React.useState('');
+  const [level, setLevel] = React.useState('');
   const [TVL, setTVL] = React.useState('');
   const [Invites, setInvites] = React.useState('');
   const [currentAccount, setCurrentAccount] = React.useState('');
@@ -115,16 +115,110 @@ function DrawerAppBar(props) {
             let tx = await contract.users(currentAccount)
             //await tx.wait();
             setTVL(ethers.formatUnits(tx[8], 18))
-            setLevel(tx[1])
-            setRewards(ethers.formatUnits(tx[6], 18))
-            setInvites(tx[0][12])
-            console.log("user", ethers.formatUnits(tx[6], 18))
+            //setRewards(ethers.formatUnits(tx[6], 18))
+            //setInvites(tx[0][12])
+            console.log("user", tx[1])
+            //setLevel(tx[1])
             //setTokprice(ethers.formatUnits(tx, 18))
         }
       } catch(error) {
         console.log(error);
       }
   };
+
+  async function Checkuser1() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+  
+            let tx = await contract.users(currentAccount)
+            //await tx.wait();
+            //setTVL(ethers.formatUnits(tx[8], 18))
+            setRewards(ethers.formatUnits(tx[6], 18))
+            //setInvites(tx[0][12])
+            console.log("user", tx[1])
+            //setLevel(tx[1])
+            //setTokprice(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+
+  async function Checkuser2() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+  
+            let tx = await contract.users(currentAccount)
+            //await tx.wait();
+            //setTVL(ethers.formatUnits(tx[8], 18))
+            //setRewards(ethers.formatUnits(tx[6], 18))
+            setInvites(tx[0][12])
+            console.log("user", tx[1])
+            //setLevel(tx[1])
+            //setTokprice(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+
+  async function Checkuser3() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+  
+            let tx = await contract.users(currentAccount)
+            //await tx.wait();
+            //setTVL(ethers.formatUnits(tx[8], 18))
+            //setRewards(ethers.formatUnits(tx[6], 18))
+            //setInvites(tx[0][12])
+            console.log("user", tx[1])
+            setLevel(tx[1])
+            //setTokprice(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+
+  async function Checkuser4() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+  
+            let tx = await contract.users(currentAccount)
+            //await tx.wait();
+            //setTVL(ethers.formatUnits(tx[8], 18))
+            //setRewards(ethers.formatUnits(tx[6], 18))
+            //setInvites(tx[0][12])
+            console.log("user", tx[1])
+            //setLevel(tx[1])
+            //setTokprice(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+
+  console.log('level', level)
 
   async function Checkui() {
     try {
@@ -198,6 +292,10 @@ function DrawerAppBar(props) {
   );
 
   const { data, error} = useSWR('OneTok', Checkuser, {refreshInterval: 1000})
+  const { data2, error2} = useSWR('OneTok', Checkuser1, {refreshInterval: 1000})
+  const { data4, error4} = useSWR('OneTok', Checkuser2, {refreshInterval: 1000})
+  const { data5, error5} = useSWR('OneTok', Checkuser3, {refreshInterval: 1000})
+  const { data6, error6} = useSWR('OneTok', Checkuser4, {refreshInterval: 1000})
   const { data1, error1} = useSWR('Ethbal', Checkui, {refreshInterval: 1000})
   const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
 
@@ -328,11 +426,11 @@ function DrawerAppBar(props) {
                       <Typography className='t12'>{rewards ? Number(rewards) : 0} PLS</Typography>
                       <div className='refitems'>
                         <Typography className='t13'>Your level</Typography>
-                        <Typography className='t13'>{level ? Number(level) : 0}</Typography>
+                        <Typography className='t13'>{Number(level)}</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>TVL from 5 lines </Typography>
-                        <Typography className='t13'>{TVL}</Typography>
+                        <Typography className='t13'>{Number(TVL)}</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>Number of invited</Typography>
