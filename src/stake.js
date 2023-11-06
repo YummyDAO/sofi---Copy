@@ -94,6 +94,7 @@ function DrawerAppBar(props) {
   const [rebondinput, setRebondinput] = React.useState('');
   const [sellinput, setSellinput] = React.useState('');
   const [bondbalance, setBondbalance] = React.useState('');
+  const [Stakedbalance, setStakedbalance] = React.useState('');
   const [Tokinput, setTokinput] = React.useState('');
 
   const connectWallet = async () => {
@@ -194,6 +195,24 @@ function DrawerAppBar(props) {
             //await tx.wait();
             console.log("exchange", ethers.formatUnits(tx[0], 18))
             setBondbalance(ethers.formatUnits(tx[0], 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+  async function CheckedStake(value) {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+  
+            let tx = await contract.bonds(currentAccount, value);
+            //await tx.wait();
+            console.log("exchange", ethers.formatUnits(tx[5], 18))
+            setStakedbalance(ethers.formatUnits(tx[5], 18))
         }
       } catch(error) {
         console.log(error);
@@ -303,6 +322,7 @@ function DrawerAppBar(props) {
   const handleChange1 = (event) => {
     setAge(event.target.value);
     Bondbal(event.target.value);
+    CheckedStake(event.target.value)
   };
 
   /*const change3 = (event) => {
@@ -529,11 +549,12 @@ function DrawerAppBar(props) {
                         </Select>*/}
                         {menu1}
                         <TextField id="outlined-basic" className='t8' label={Number(bondbalance).toFixed(2) * Number(1.6)} variant="outlined" /*onChange={change3}*//>
+                        <Typography className=''>{ Stakedbalance > 0 ? <span className="connect">!!! Bond has been staked</span> : <span className='none'> Connect Wallet </span> }</Typography>
                         <Typography className=''>Bond Balance</Typography>
                         <Typography className='riv'>{Number(bondbalance).toFixed(2)} PLS</Typography>
                       </FormControl>
                     </Box>
-                      <Button variant="contained" className='t6 mu' onClick={Stake}>Stake</Button>
+                      <Button variant="contained" disabled={Stakedbalance > 0 ? true : false} className='t6 mu' onClick={Stake}>Stake</Button>
                       <Button variant="contained" href="/" className='t6'>Buy a Bond</Button>
                     </div>
                   </Card>
