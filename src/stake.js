@@ -373,7 +373,7 @@ function DrawerAppBar(props) {
             </Link>
             <div className='nav-items'>
               <Link href="/" underline="none" color="inherit" className='css-1fn6sd1'>
-                <Typography >Bond CAROL</Typography>
+                <Typography >Cook WRAPPEDX</Typography>
               </Link>
               <Link href="/stake" underline="none" color="inherit" className='css-1fn6sd1'>
                 <Typography >Stake WRAPPEDX</Typography>
