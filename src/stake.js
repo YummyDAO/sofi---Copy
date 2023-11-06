@@ -548,7 +548,7 @@ function DrawerAppBar(props) {
                           <MenuItem value={30}>Thirty</MenuItem>}
                         </Select>*/}
                         {menu1}
-                        <TextField id="outlined-basic" className='t8' label={Number(bondbalance).toFixed(2) * Number(1.6)} variant="outlined" /*onChange={change3}*//>
+                        <TextField id="outlined-basic" className='t8' disabled={true} label={Number(bondbalance).toFixed(2) * Number(1.6)} variant="outlined" /*onChange={change3}*//>
                         <Typography className=''>{ Stakedbalance > 0 ? <span className="connect">!!! Bond has been staked</span> : <span className='none'> Connect Wallet </span> }</Typography>
                         <Typography className=''>Bond Balance</Typography>
                         <Typography className='riv'>{Number(bondbalance).toFixed(2)} PLS</Typography>
