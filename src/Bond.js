@@ -86,6 +86,9 @@ function DrawerAppBar(props) {
   const [Onetok, setOnetok] = React.useState('');
   const [Avail, setAvail] = React.useState('');
   const [Tliquidity, setTliquidity] = React.useState('');
+  const [bonds1, setBonds1] = React.useState('');
+  const [Tinvested1, setTinvested1] = React.useState('');
+  const [Twithdraw1, setTwithdraw1] = React.useState('');
 
 
 
@@ -121,6 +124,35 @@ const connectWallet = async () => {
   }
 };
 
+/*async function Checkui() {
+  try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+
+          let tx = await contract.getUIData(currentAccount)
+          //setAvail(ethers.formatUnits(tx[1] , 18))
+          //setLiquidity(tx[4])
+          //setLiq(tx[3])
+          //setHold(tx[2])
+          setTinvested1(ethers.formatUnits(tx[0][4] , 18))
+          setTwithdraw1(ethers.formatUnits(tx[0][7] , 18))
+          setBonds1(tx[0][2])
+          //let tx1 = [tx[7]]
+          //await tx.wait();
+          console.log("ui", tx[0][4])
+          //setTokprice(ethers.formatUnits(tx, 18))
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};*/
+
+//console.log('tinvested', Tinvested1)
+
 async function Checkfee(value) {
   try {
       const { ethereum } = window;
@@ -139,6 +171,7 @@ async function Checkfee(value) {
       console.log(error);
     }
 };
+
 
 async function Period1() {
   setPeriodindex(0)
@@ -219,6 +252,9 @@ async function Checkui() {
 
           let tx = await contract.getUIData(currentAccount)
           setAvail(ethers.formatUnits(tx[1] , 18))
+          setTinvested1(ethers.formatUnits(tx[0][4] , 18))
+          setTwithdraw1(ethers.formatUnits(tx[0][7] , 18))
+          setBonds1(tx[0][2])
           //await tx.wait();
           console.log("ui", tx[0][4])
           //setTokprice(ethers.formatUnits(tx, 18))
@@ -303,11 +339,13 @@ const GetTokens = async () => {
   const { data1, error1} = useSWR('Ethbal', Ethbal, {refreshInterval: 1000})
   const { data2, error2} = useSWR('Tokbal', Tokbal1, {refreshInterval: 1000})
   const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
+  const { data4, error4} = useSWR('Tokbal', Checkui, {refreshInterval: 1000})
 
   useEffect(() => {
     OneTok();
     Ethbal();
     Tokbal1();
+    Checkui();
     connectWallet();
 }, [currentAccount]);
 
@@ -440,6 +478,33 @@ const GetTokens = async () => {
                     <Typography className='t5'>!!! Upon the completion of the vesting period, you will receive +30% in tokens to the amount of your initial bond.</Typography>
                   </div>
                 </Card>
+                <div className='stakebottom'>
+                  <Card className='t2'>
+                    <div className='innercard'>
+                      <div className='stside'>
+                        <div className='st1'>
+                          <Typography className='t3'>Total Value of Bonds</Typography>
+                          <Typography className='t3 tot'>{Number(Tinvested1).toFixed(2)} PLS</Typography>
+                          <Typography className='t3 tit none'>Max staking income is 200%</Typography>
+                        </div>
+                        <div className='st2'>
+                          <div className='refitems fi '>
+                            <Typography className='t13'>Bonds Count : {Number(bonds1)}</Typography>
+                            <Typography className='t13 fu none'>0 WrappedX</Typography>
+                          </div>
+                          <div className='refitems fi none'>
+                            <Typography className='t13'>Total Withdrawn : {Twithdraw1}</Typography>
+                            <Typography className='t13 fu none'>0 WrappedX</Typography>
+                          </div>
+                          <div className='refitems fi'>
+                            <Typography className='t13'>Tickets earned: 0</Typography>
+                            <Typography className='t13 fu none'>0 WrappedX</Typography>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
               </div>
             </Grid>
           </Grid> 

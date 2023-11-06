@@ -75,9 +75,9 @@ const contractAbi = [{"inputs":[{"internalType":"address","name":"uniswapRouterA
 function DrawerAppBar(props) {
   //const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [rewards, setRewards] = React.useState('');
-  const [level, setLevel] = React.useState('');
-  const [TVL, setTVL] = React.useState('');
+  const [rewards, setRewards1] = React.useState('');
+  const [level, setLevel1] = React.useState('');
+  const [TVL, setTVL1] = React.useState('');
   const [Invites, setInvites] = React.useState('');
   const [currentAccount, setCurrentAccount] = React.useState('');
   const [Tliquidity, setTliquidity] = React.useState('');
@@ -114,103 +114,11 @@ function DrawerAppBar(props) {
   
             let tx = await contract.users(currentAccount)
             //await tx.wait();
-            setTVL(ethers.formatUnits(tx[8], 18))
-            //setRewards(ethers.formatUnits(tx[6], 18))
-            //setInvites(tx[0][12])
-            console.log("user", tx[1])
-            //setLevel(tx[1])
-            //setTokprice(ethers.formatUnits(tx, 18))
-        }
-      } catch(error) {
-        console.log(error);
-      }
-  };
-
-  async function Checkuser1() {
-    try {
-        const { ethereum } = window;
-        if (ethereum) {
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = provider.getSigner();
-            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
-  
-            let tx = await contract.users(currentAccount)
-            //await tx.wait();
-            //setTVL(ethers.formatUnits(tx[8], 18))
-            setRewards(ethers.formatUnits(tx[6], 18))
-            //setInvites(tx[0][12])
-            console.log("user1", ethers.formatUnits(tx[6], 18))
-            //setLevel(tx[1])
-            //setTokprice(ethers.formatUnits(tx, 18))
-        }
-      } catch(error) {
-        console.log(error);
-      }
-  };
-
-  async function Checkuser2() {
-    try {
-        const { ethereum } = window;
-        if (ethereum) {
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = provider.getSigner();
-            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
-  
-            let tx = await contract.users(currentAccount)
-            //await tx.wait();
-            //setTVL(ethers.formatUnits(tx[8], 18))
-            //setRewards(ethers.formatUnits(tx[6], 18))
+            setTVL1(ethers.formatUnits(tx[8], 18))
+            setRewards1(ethers.formatUnits(tx[6], 18))
             setInvites(tx[0][12])
             console.log("user", tx[1])
-            //setLevel(tx[1])
-            //setTokprice(ethers.formatUnits(tx, 18))
-        }
-      } catch(error) {
-        console.log(error);
-      }
-  };
-
-  async function Checkuser3() {
-    try {
-        const { ethereum } = window;
-        if (ethereum) {
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = provider.getSigner();
-            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
-  
-            let tx = await contract.users(currentAccount)
-            //await tx.wait();
-            //setTVL(ethers.formatUnits(tx[8], 18))
-            //setRewards(ethers.formatUnits(tx[6], 18))
-            //setInvites(tx[0][12])
-            console.log("user", tx[1])
-            setLevel(tx[1])
-            //setTokprice(ethers.formatUnits(tx, 18))
-        }
-      } catch(error) {
-        console.log(error);
-      }
-  };
-
-  async function Checkuser4() {
-    try {
-        const { ethereum } = window;
-        if (ethereum) {
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = provider.getSigner();
-            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
-  
-            let tx = await contract.users(currentAccount)
-            //await tx.wait();
-            //setTVL(ethers.formatUnits(tx[8], 18))
-            //setRewards(ethers.formatUnits(tx[6], 18))
-            //setInvites(tx[0][12])
-            console.log("user", tx[1])
-            //setLevel(tx[1])
+            setLevel1(tx[1])
             //setTokprice(ethers.formatUnits(tx, 18))
         }
       } catch(error) {
@@ -295,10 +203,6 @@ function DrawerAppBar(props) {
   );
 
   const { data, error} = useSWR('OneTok', Checkuser, {refreshInterval: 1000})
-  const { data2, error2} = useSWR('OneTok', Checkuser1, {refreshInterval: 1000})
-  const { data4, error4} = useSWR('OneTok', Checkuser2, {refreshInterval: 1000})
-  const { data5, error5} = useSWR('OneTok', Checkuser3, {refreshInterval: 1000})
-  const { data6, error6} = useSWR('OneTok', Checkuser4, {refreshInterval: 1000})
   const { data1, error1} = useSWR('Ethbal', Checkui, {refreshInterval: 1000})
   const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
 
@@ -306,10 +210,6 @@ function DrawerAppBar(props) {
   useEffect(() => {
     connectWallet();
     Checkuser();
-    Checkuser1();
-    Checkuser2();
-    Checkuser3();
-    Checkuser4();
     Checkui();
 }, [currentAccount]);
 

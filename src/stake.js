@@ -149,7 +149,7 @@ function DrawerAppBar(props) {
             setLiquidity(tx[4])
             setLiq(tx[3])
             setHold(tx[2])
-            setTinvested(ethers.formatUnits(tx[0][4] , 18))
+            //setTinvested(ethers.formatUnits(tx[0][4] , 18))
             setTwithdraw(ethers.formatUnits(tx[0][7] , 18))
             setBonds(tx[0][2])
             //let tx1 = [tx[7]]
@@ -194,6 +194,38 @@ function DrawerAppBar(props) {
             //await tx.wait();
             console.log("exchange", ethers.formatUnits(tx[0], 18))
             setBondbalance(ethers.formatUnits(tx[0], 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+  };
+
+  async function Tstaked() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+            let tx1 = await contract.getUIData(currentAccount)
+            let bondcount = tx1[0][2]
+
+            let arr = [];
+            let total = 0;
+
+            for (let i = 0; i < bondcount; i++) {
+              arr.push(i);
+              let tx = await contract.bonds(currentAccount, i);
+              //total += ethers.formatUnits(tx[4], 18);
+              total += Number(tx[4])
+              console.log("tx13", total)
+            }
+  
+            //let tx = await contract.bonds(currentAccount, value);
+            //await tx.wait();
+            console.log("exchange1", total)
+            setTinvested(total)
         }
       } catch(error) {
         console.log(error);
@@ -295,6 +327,13 @@ function DrawerAppBar(props) {
     setValue(newValue);
   };
 
+  const all = Number(hold) + Number(liq) + Number(Liquidity)
+  const all1 = all / 100
+
+  console.log('all1', all1)
+
+
+
   let arr = [];
 
   for (let i = 0; i < bonds; i++) {
@@ -315,6 +354,8 @@ function DrawerAppBar(props) {
         ))}
       </Select>
   );
+
+  const earndivider = 2 + Number(all1)
 
 
   const drawer = (
@@ -345,6 +386,7 @@ function DrawerAppBar(props) {
   const { data1, error1} = useSWR('Ethbal', Checkui, {refreshInterval: 1000})
   const { data2, error2} = useSWR('Tokbal', Checkuser, {refreshInterval: 1000})
   const { data3, error3} = useSWR('Tokbal', Liquidity1, {refreshInterval: 1000})
+  const { data4, error4} = useSWR('Tokbal', Tstaked, {refreshInterval: 1000})
   //const { data4, error4} = useSWR('Tokbal', Bondbal, {refreshInterval: 1000})
 
   //const container = window !== undefined ? () => window().document.body : undefined;
@@ -353,6 +395,7 @@ function DrawerAppBar(props) {
     Checkuser();
     OneTok();
     Checkui();
+    Tstaked();
 }, [currentAccount]);
 
   return (
@@ -520,22 +563,22 @@ function DrawerAppBar(props) {
                   <Card className='t2 tc'>
                     <div className='innercard'>
                       <Typography className='t3'>Your daily income</Typography>
-                      <Typography className='t12'>{2 + Number(Liquidity) + Number(hold) + Number(liq)} %</Typography>
+                      <Typography className='t12'>{2 + Number(all1)} %</Typography>
                       <div className='refitems'>
                         <Typography className='t13'>Base</Typography>
                         <Typography className='t13'>+2.00%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>liquidity Bonus</Typography>
-                        <Typography className='t13'>+{Liquidity ? Number(Liquidity) : 0}%</Typography>
+                        <Typography className='t13'>+{Liquidity ? Number(Liquidity) / 100 : 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>Hold Bonus</Typography>
-                        <Typography className='t13'>+{hold ? Number(hold) : 0}%</Typography>
+                        <Typography className='t13'>+{hold ? Number(hold) / 100 : 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>User liq Bonus</Typography>
-                        <Typography className='t13'>+{liq ? Number(liq) : 0}%</Typography>
+                        <Typography className='t13'>+{liq ? Number(liq) / 100: 0}%</Typography>
                       </div>
                       <div className='refitems'>
                         <Typography className='t13'>Tickets Raffle Pot</Typography>
@@ -549,20 +592,20 @@ function DrawerAppBar(props) {
                     <div className='innercard'>
                       <div className='stside'>
                         <div className='st1'>
-                          <Typography className='t3'>Total invested</Typography>
-                          <Typography className='t3 tot'>{Number(Tinvested).toFixed(2)} PLS</Typography>
+                          <Typography className='t3'>Total WRAPPEDX Staked</Typography>
+                          <Typography className='t3 tot'>{Number(Tinvested / 1000000000000000000).toFixed(2)} WrappedX</Typography>
                           <Typography className='t3 tit'>Max staking income is 200%</Typography>
                         </div>
                         <div className='st2'>
                           <div className='refitems fi'>
-                            <Typography className='t13'>Bonds Count : {Number(bonds)}</Typography>
+                            <Typography className='t13'>Total Earnings per day : {Number(Number(earndivider / 100) * Number(Tinvested / 1000000000000000000).toFixed(2)).toFixed(2)}</Typography>
                             <Typography className='t13 fu none'>0 WrappedX</Typography>
                           </div>
                           <div className='refitems fi'>
                             <Typography className='t13'>Total Withdrawn : {Twithdraw}</Typography>
                             <Typography className='t13 fu none'>0 WrappedX</Typography>
                           </div>
-                          <div className='refitems fi'>
+                          <div className='refitems fi none'>
                             <Typography className='t13'>Tickets earned: 0</Typography>
                             <Typography className='t13 fu none'>0 WrappedX</Typography>
                           </div>
