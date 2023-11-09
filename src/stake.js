@@ -531,10 +531,10 @@ function DrawerAppBar(props) {
                 <div className='stake3'>
                   <Card className='t2 mo1'>
                     <div className='innercard'>
-                    <Typography className='t3'>Select Bonds</Typography>
+                    <Typography className='t3 white'>Select Bonds</Typography>
                     <Box sx={{ minWidth: 120 }}>
                       <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Select Bond</InputLabel>
+                        <InputLabel id="demo-simple-select-label" className='white'>Select Bond</InputLabel>
                         {/*<Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
@@ -584,26 +584,26 @@ function DrawerAppBar(props) {
                   <Card className='t2 tc'>
                     <div className='innercard'>
                       <Typography className='t3'>Your daily income</Typography>
-                      <Typography className='t12'>{2 + Number(all1)} %</Typography>
+                      <Typography className='t12'>+{(2 + Number(all1)).toFixed(2)}%</Typography>
                       <div className='refitems'>
-                        <Typography className='t13'>Base</Typography>
-                        <Typography className='t13'>+2.00%</Typography>
+                        <Typography className='t13 white'>Base</Typography>
+                        <Typography className='t13 white'>+2.00%</Typography>
                       </div>
                       <div className='refitems'>
-                        <Typography className='t13'>liquidity Bonus</Typography>
-                        <Typography className='t13'>+{Liquidity ? Number(Liquidity) / 100 : 0}%</Typography>
+                        <Typography className='t13 white'>liquidity Bonus</Typography>
+                        <Typography className='t13 white'>+{Liquidity ? Number(Liquidity) / 100 : 0}%</Typography>
                       </div>
                       <div className='refitems'>
-                        <Typography className='t13'>Hold Bonus</Typography>
-                        <Typography className='t13'>+{hold ? Number(hold) / 100 : 0}%</Typography>
+                        <Typography className='t13 white'>Hold Bonus</Typography>
+                        <Typography className='t13 white'>+{hold ? Number(hold) / 100 : 0}%</Typography>
                       </div>
                       <div className='refitems'>
-                        <Typography className='t13'>User liq Bonus</Typography>
-                        <Typography className='t13'>+{liq ? Number(liq) / 100: 0}%</Typography>
+                        <Typography className='t13 white'>User liq Bonus</Typography>
+                        <Typography className='t13 white'>+{liq ? Number(liq) / 100: 0}%</Typography>
                       </div>
                       <div className='refitems'>
-                        <Typography className='t13'>Tickets Raffle Pot</Typography>
-                        <Typography className='t13'>{Number(Number(Tliquidity) * 0.01).toFixed(2)} PLS</Typography>
+                        <Typography className='t13 white'>Tickets Raffle Pot</Typography>
+                        <Typography className='t13 white'>{Number(Number(Tliquidity) * 0.01).toFixed(2)} PLS</Typography>
                       </div>
                     </div>
                   </Card>

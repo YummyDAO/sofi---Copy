@@ -361,6 +361,7 @@ img, svg {
     box-shadow: none !important;
     border-radius: 20px !important;
     border: 1px solid rgb(83 69 251) ;
+    height: 100% !important;
 }
 .innercard{
   padding: 1.3rem !important;
@@ -439,6 +440,7 @@ img, svg {
   font-size: 1.2rem !important;
   line-height: 1.2rem !important;
   margin: 0 !important;
+  color: #fff !important;
 }
 .tc{
   width: 30%;
@@ -474,6 +476,7 @@ img, svg {
 }
 .t12{
   font-size: 2rem !important;
+  color: rgb(83 69 251);
 }
 .refitems{
   display: flex;
@@ -505,6 +508,10 @@ img, svg {
 }
 .tot{
   font-size: 2rem !important;
+  color: #fff !important;
+}
+.white{
+  color: #fff !important;
 }
 .tit{
   font-size: 0.8rem !important;
@@ -522,12 +529,12 @@ img, svg {
   display: flex;
 }
 .tliq{
-  border: 1px solid #2D3447 !important;
+  border: 1px solid #717b83 !important;
     border-radius: 10px;
     display: flex;
     padding: 1rem;
     align-self: center;
-    color: #717b83 !important;
+    color: #fff !important;
     margin-right: 1rem;
 }
 .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root, .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
@@ -547,8 +554,8 @@ img, svg {
 .tprice{
   border-radius: 10px;
   display: flex;
-  border: 1px solid #2D3447 !important;
-  color: #717b83 !important;
+  border: 1px solid #717b83 !important;
+  color: #fff !important;
   align-self: center;
   padding: 1rem;
   line-height: 1rem;
@@ -567,6 +574,7 @@ img, svg {
 .mu3{
   font-size: 1.5rem !important;
   margin-bottom: 0.5rem !important;
+  color: #fff !important;
 }
 .mu4{ 
   margin-bottom: 1rem !important;
@@ -586,6 +594,7 @@ img, svg {
 }
 .riv{
   font-size: 1.5rem !important;
+  color: #fff !important;
 }
 .pair a {
   text-decoration: none;
